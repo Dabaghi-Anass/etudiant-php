@@ -57,11 +57,15 @@
     //  lerp : Linear interpolation elle retourne une valeur entre a et b selon $t
     //  $t et une valeur entre 0 et 1
     // lerp(a,b,t) = a + (b - a) * t
-    function lerp($a, $b, $t) {
+    function rgbLerp($a, $b, $t) {
         $red=$a[0] + $t * ($b[0] - $a[0]);
         $green=$a[1] + $t * ($b[1] - $a[1]);
         $blue=$a[2] + $t * ($b[2] - $a[2]);
         return "rgb($red , $green , $blue)";
+    }
+    function hslLerp($a, $b, $t) {
+        $hue=$a + $t * ($b - $a);
+        return "hsl($hue , 100% , 50%)";
     }
     $filliere = strtoupper($_GET['filliere']);
     $etudiants = $etudiantsFromDb;
@@ -126,7 +130,7 @@
             <tbody id="etudiants-list">
                 <?php
                     foreach ($etudiants as $etudiant) {
-                        $color = lerp([247, 18, 10], [3, 252, 61], $etudiant['note'] / 20);
+                        $color = hslLerp(0, 140, $etudiant['note'] / 20);
                         echo "<tr>";
                         echo "<td>{$etudiant['nom']}</td>";
                         echo "<td>{$etudiant['prenom']}</td>";
