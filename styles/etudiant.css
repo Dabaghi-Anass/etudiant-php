@@ -1,0 +1,64 @@
+.sub-header{
+    display: flex;
+    flex-direction: column;
+    color: #0516ad;
+    margin-block: 1rem;
+    font-weight: bold;
+}
+
+/*
+.etudiant-table{
+    border-collapse: collapse;
+    width: 100%;
+    margin-block: 1rem;
+}
+.etudiant-table *{
+    text-align: center;
+    padding: 1rem;
+}
+.etudiant-table th{
+    background: rgb(142, 253, 148) !important;
+}
+.etudiant-table th,tr{
+    background: rgb(236, 236, 236);
+}
+.etudiant-table tr:nth-child(even){
+    background: rgb(214, 214, 214);
+} */
+
+ul.links{
+    display: flex;
+    align-items: space-between;
+    gap: 1rem;
+    list-style: none;
+    margin-block: 1rem;
+}
+
+.emphasis{
+    color: #ad0521 !important;
+    font-weight: bold;
+    font-style: italic;
+}
+.grade-row{
+    color: rgb(0, 116, 52);
+    font-weight: bold;
+}
+.mention-row{
+    --_bg : orangered; /*arriere plan de backup*/
+    padding: .4rem;
+    background: var(--_bg);
+    color: white;
+    border-radius: .3rem;
+    font-weight: bold;
+}
+/*message si le tableau est vide*/
+.empty-list{
+    text-align: center;
+    padding: 1rem;
+    font-size: 2rem;
+    color: rgb(114, 114, 114);
+}
+
+table[data-hidden="false"]{
+    display: none;
+}

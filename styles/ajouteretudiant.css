@@ -1,0 +1,49 @@
+ul.links{
+    display: flex;
+    align-items: space-between;
+    gap: 1rem;
+    list-style: none;
+    margin-block: 1rem;
+}
+form label{
+    display: block;
+    padding: .3rem 0;
+}
+form label span{
+    width: 150px;
+    display: inline-block;
+    padding: .4rem 0;
+}
+form label input,select{
+    padding: .4rem 1rem;
+    width: 100%;
+}
+
+form{
+    padding: 1rem;
+    display: block;
+}
+section.form{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    padding-block: 2rem;
+}
+section.form:has(.error-span){
+    gap: 1rem;
+}
+.errors{
+    color: red;
+    font-size: 1.2rem;
+    margin-block: 2rem;
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 700px){
+    section.form{
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+}
