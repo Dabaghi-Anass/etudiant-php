@@ -57,17 +57,11 @@
     //  lerp : Linear interpolation elle retourne une valeur entre a et b selon $t
     //  $t et une valeur entre 0 et 1
     // lerp(a,b,t) = a + (b - a) * t
-    function rgbLerp($a, $b, $t) {
-        $red=$a[0] + $t * ($b[0] - $a[0]);
-        $green=$a[1] + $t * ($b[1] - $a[1]);
-        $blue=$a[2] + $t * ($b[2] - $a[2]);
-        return "rgb($red , $green , $blue)";
-    }
     function hslLerp($a, $b, $t) {
-        $hue=$a + $t * ($b - $a);
-        return "hsl($hue , 100% , 50%)";
+        $hue= $a + $t * ($b - $a);
+        return "hsl($hue , 100% , 45%)";
     }
-    $filliere = strtoupper($_GET['filliere']);
+    $filliere = strtoupper($_GET['filiere']);
     $etudiants = $etudiantsFromDb;
     if(!empty($filliere)){
         $etudiants = getListeParFiliere($filliere);
@@ -141,7 +135,8 @@
                 ?>
             </tbody>
         </table>
+        <a href="filieres.php" class="link">listes des filieres</a>
+        <?php include("../components/footer.php") ?>
     </main>
-    <?php include("../components/footer.php") ?>
 </body>
 </html>

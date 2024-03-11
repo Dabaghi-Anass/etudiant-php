@@ -1,5 +1,5 @@
 <?php
-    $fillieres = ['SMI', 'SMP', 'SVI', 'BCG'];
+    include("../components/fillieres.php");
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -19,8 +19,8 @@
     <div style="padding-inline : var(--inline-padding)">
     <hr class="rule">
     <ul class="links">
-        <li><a class="link" href="../index.php">acceuil</a></li>
-        <li><a class="link" href="etudiants.php?filliere=SMI">listes des etudiants</a></li>
+        <li><a class="link" href="/">acceuil</a></li>
+        <li><a class="link" href="etudiants.php">listes des etudiants</a></li>
     </ul>
     <hr class="rule">
     </div>
@@ -49,8 +49,8 @@
                 <label>
                     <span>choisie la filliere</span>
                     <select name="filliere" id="filliere">
-                        <?php foreach($fillieres as $f) {?>
-                            <option value="<?= $f ?>"><?= $f ?></option>
+                        <?php foreach($filieres as $f) {?>
+                            <option value="<?= $f["codeF"] ?>"><?= $f["intituleF"] ?></option>
                         <?php }?>
                     </select>
                 </label>
