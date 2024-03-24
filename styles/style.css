@@ -64,7 +64,7 @@ header {
 .home-content {
 	padding: var(--inline-padding);
 	height: 100%;
-	/* min-height: 100%; */
+	min-height: 100%;
 }
 .home-content p {
 	margin-block: 2rem 1rem;

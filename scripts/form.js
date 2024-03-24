@@ -39,8 +39,13 @@ function validateInput(e) {
 		span.className = "";
 	}
 	const etudiant = validateForm();
-	if (etudiant !== null) submitBtn.removeAttribute("disabled");
-	else submitBtn.setAttribute("disabled", "true");
+	if (etudiant !== null) {
+		etudiant.sexe = form.querySelector("input[name='sexe']:checked").value;
+		etudiant.semestres = Array.from(
+			form.querySelectorAll("input.semestreCheckbox:checked")
+		).map((checkbox) => checkbox.value);
+		submitBtn.removeAttribute("disabled");
+	} else submitBtn.setAttribute("disabled", "true");
 }
 function validateFields(etudiant) {
 	for (const key in etudiant) {
@@ -82,26 +87,15 @@ form.querySelectorAll(
 	"input:not(input[type='checkbox'],input[type='radio']) , textarea"
 ).forEach((input) => input.addEventListener("input", validateInput));
 form.addEventListener("submit", (e) => {
-	e.preventDefault();
+	// e.preventDefault();
 	const etudiant = validateForm();
-	etudiant.sexe = form.querySelector("input[name='sexe']:checked").value;
-	etudiant.semestres = Array.from(
-		form.querySelectorAll("input.semestreCheckbox:checked")
-	).map((checkbox) => checkbox.value);
-	if (etudiant) {
-		const formData = new FormData();
-		for (const key in etudiant) {
-			formData.append(key, etudiant[key]);
-		}
-		addEtudiant(formData);
-	}
 });
 
-async function addEtudiant(formData) {
-	const options = {
-		method: "post",
-		body: formData,
-	};
-	const response = await fetch("./add.php", options);
-	console.log(response.json());
-}
+// async function addEtudiant(formData) {
+// 	const options = {
+// 		method: "POST",
+// 		body: formData,
+// 	};
+// 	const response = await fetch("./add.php", options);
+// 	console.log(response.headers.get("Location"));
+// }

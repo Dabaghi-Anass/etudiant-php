@@ -36,10 +36,16 @@
             if(empty($etudiant)) echo "<h1 class='empty-list'>aucun etudiant n'est trouvé</h1>";
         ?>
         <div class="etudiant-details">
-            <h3><strong>Nom:</strong> <?= $etudiant['nom']; ?></h3>
-            <h3><strong>Prenom:</strong> <?= $etudiant['prenom']; ?></h3>
-            <h3><strong>Note:</strong> <?= $etudiant['note']; ?></h3>
-            <h3><strong>Filiere:</strong> <?= $etudiant['filliere']; ?></h3>
+            <h1>bonjour <?= $etudiant["nom"] . " " . $etudiant["prenom"] ?></h1>
+            <h3>vous etes inscrit avec succes</h3>
+            <h3>code: <?= $etudiant["code"] ?></h3>
+            <h3>note: <?= $etudiant["note"] ?></h3>
+            <h3>filliere: <?= $etudiant["filliere"] ?></h3>
+            <h3>sexe: <?= $etudiant["sexe"] ?></h3>
+            <h3>semestres: <?= implode(" , " , $etudiant["semestres"]) ?></h3>
+            <h3>mot de passe: <?= $etudiant["password"] ?></h3>
+            <h3>commentaire</h3>
+            <p><?= $etudiant["commentaire"] ?? "N/A"?></p>
         </div>
         <div class="liens">
             <a href="javascript:history.go(-1)" class="back-link">retour</a>

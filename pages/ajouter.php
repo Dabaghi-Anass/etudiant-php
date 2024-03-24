@@ -30,7 +30,7 @@
         <h1 class="heading-big">Ajouter Etudiant</h1>
         <hr class="rule">
         <section class="form">
-            <form id="form">
+            <form id="form" action="add.php" method="post">
                 <label>
                     <span>Entrez le code</span>
                     <input placeholder="code" type="text" id="code" name="code" required>
