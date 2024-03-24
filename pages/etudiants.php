@@ -1,25 +1,6 @@
 <?php
     define('MOY_REUSSITE', 10);
-    $etudiantsFromDb = [
-        ['nom' => 'Smith', 'prenom' => 'John', 'note' => 20, 'filliere' => 'SMI'],
-        ['nom' => 'Johnson', 'prenom' => 'Robert', 'note' => 12, 'filliere' => 'SMI'],
-        ['nom' => 'Williams', 'prenom' => 'Michael', 'note' => 10, 'filliere' => 'SMP'],
-        ['nom' => 'Doe', 'prenom' => 'Jane', 'note' => 19, 'filliere' => 'SMI'],
-        ['nom' => 'Brown', 'prenom' => 'David', 'note' => 18, 'filliere' => 'SVI'],
-        ['nom' => 'Jones', 'prenom' => 'Jennifer', 'note' => 16, 'filliere' => 'SMI'],
-        ['nom' => 'Miller', 'prenom' => 'William', 'note' => 14, 'filliere' => 'SMI'],
-        ['nom' => 'Davis', 'prenom' => 'Linda', 'note' => 11, 'filliere' => 'SMP'],
-        ['nom' => 'Garcia', 'prenom' => 'Maria', 'note' => 9, 'filliere' => 'SMP'],
-        ['nom' => 'Martinez', 'prenom' => 'Daniel', 'note' => 10, 'filliere' => 'SMI'],
-        ['nom' => 'Smith', 'prenom' => 'John', 'note' => 10, 'filliere' => 'SMI'],
-        ['nom' => 'Anderson', 'prenom' => 'James', 'note' => 17, 'filliere' => 'SVI'],
-        ['nom' => 'Taylor', 'prenom' => 'Elizabeth', 'note' => 19, 'filliere' => 'SVI'],
-        ['nom' => 'Thomas', 'prenom' => 'Christopher', 'note' => 20, 'filliere' => 'BCG'],
-        ['nom' => 'Harris', 'prenom' => 'Jessica', 'note' => 8, 'filliere' => 'SMP'],
-        ['nom' => 'Clark', 'prenom' => 'Sarah', 'note' => 7, 'filliere' => 'SMP'],
-        ['nom' => 'Lewis', 'prenom' => 'Matthew', 'note' => 0, 'filliere' => 'SMP'],
-        ['nom' => 'Anass', 'prenom' => 'Dabaghi', 'note' => 2, 'filliere' => 'SMI']
-    ];
+    include("../db/data.php");
     function getListeParFiliere($filiere) {
         global $etudiantsFromDb;
         $students = [];
@@ -119,17 +100,20 @@
                     <th>Prenom</th>
                     <th>note</th>
                     <th>mention</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody id="etudiants-list">
                 <?php
                     foreach ($etudiants as $etudiant) {
                         $color = hslLerp(0, 140, $etudiant['note'] / 20);
+                        $code = $etudiant['codeE'];
                         echo "<tr>";
                         echo "<td>{$etudiant['nom']}</td>";
                         echo "<td>{$etudiant['prenom']}</td>";
                         echo "<td class='grade-row'>{$etudiant['note']}</td>";
                         echo "<td> <span class='mention-row' style='--_bg:$color;'>" . getMention($etudiant['note']) . "</span></td>";
+                        echo "<td><a class='lien' href='user_details.php?codeE=$code'>voir plus</a></td>";
                         echo "</tr>";
                     }
                 ?>

@@ -1,5 +1,6 @@
 <?php
-    include("../components/fillieres.php");
+    include("../db/data.php");
+    $filieres = getFilieres();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -29,22 +30,26 @@
         <h1 class="heading-big">Ajouter Etudiant</h1>
         <hr class="rule">
         <section class="form">
-            <form id="form">
+            <form id="form" action="etudiants.php" method="post">
                 <label>
                     <span>Entrez le code</span>
                     <input placeholder="code" type="text" id="code" required>
+                    <span class="error"></span>
                 </label>
                 <label>
                     <span>Entrez le nom</span>
                     <input placeholder="nom" type="text" id="nom" required>
+                    <span class="error"></span>
                 </label>
                 <label>
                     <span>Entrez le prenom</span>
                     <input placeholder="prenom" type="text" id="prenom" required>
+                    <span class="error"></span>
                 </label>
                 <label>
                     <span>Entrez la note</span>
                     <input placeholder="note" type="number" id="note" required min="0" max="20">
+                    <span class="error"></span>
                 </label>
                 <label>
                     <span>choisie la filliere</span>
@@ -54,14 +59,61 @@
                         <?php }?>
                     </select>
                 </label>
-                <button class="btn">ajouter</button>
+                <label>
+                    <span>le mot de passe</span>
+                    <input placeholder="mot de passe" type="password" id="password" required min="8">
+                    <span class="error"></span>
+                </label>
+                <label>
+                    <span>le sexe</span>
+                    <div class="radio-group">
+                        <label class="gender-container">
+                        <span>homme</span>
+                        <input type="radio" name="sexe" value="homme" checked>
+                    </label>
+                    <label class="gender-container">
+                        <span>femme</span>
+                        <input type="radio" name="sexe" value="femme">
+                    </label>
+                    </div>
+                </label>
+                <div class="checkbox-group">
+                    <label class="checkbox-container">
+                        <span>S1</span>
+                        <input type="checkbox" name="semestres[0]" value="S1">
+                    </label>
+                    <label class="checkbox-container">
+                        <span>S2</span>
+                        <input type="checkbox" name="semestres[1]" value="S2">
+                    </label>
+                    <label class="checkbox-container">
+                        <span>S3</span>
+                        <input type="checkbox" name="semestres[2]" value="S3">
+                    </label>
+                    <label class="checkbox-container">
+                        <span>S4</span>
+                        <input type="checkbox" name="semestres[3]" value="S4">
+                    </label>
+                    <label class="checkbox-container">
+                        <span>S5</span>
+                        <input type="checkbox" name="semestres[4]" value="S5">
+                    </label>
+                    <label class="checkbox-container">
+                        <span>S6</span>
+                        <input type="checkbox" name="semestres[5]" value="S6">
+                    </label>
+                </div>
+                <label class="text-area-container">
+                    <span>Saisir Un commentaire</span>
+                    <textarea id="commentaire" name="commentaire" cols="30" rows="10"></textarea>
+                    <span class="error"></span>
+                </label>
+                <button class="btn" type="submit">Envoyer</button>
                 <button class="btn btn-reset" type="reset">annuler</button>
             </form>
-            <div id="error" class="errors">
-                
-            </div>
-        </section>
+            </section>
+            <a href="/" class="lien" style="display : block;width: 100%; text-align : center;">revenir a l'acceuil</a>
+        <?php include("../components/footer.php") ?>
     </main>
-    <?php include("../components/footer.php") ?>
 </body>
 </html>

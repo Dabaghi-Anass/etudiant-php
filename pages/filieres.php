@@ -1,4 +1,4 @@
-<?php include("../components/fillieres.php") ?>
+<?php include("../db/data.php") ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
