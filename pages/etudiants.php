@@ -107,7 +107,7 @@
                 <?php
                     foreach ($etudiants as $etudiant) {
                         $color = hslLerp(0, 140, $etudiant['note'] / 20);
-                        $code = $etudiant['codeE'];
+                        $code = $etudiant['code'];
                         echo "<tr>";
                         echo "<td>{$etudiant['nom']}</td>";
                         echo "<td>{$etudiant['prenom']}</td>";

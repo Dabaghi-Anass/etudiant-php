@@ -1,6 +1,8 @@
 let filliereSelect = document.getElementById("filliere");
 let errorsContainer = document.getElementById("error");
 let form = document.getElementById("form");
+const submitBtn = form.querySelector("button[type='submit']");
+submitBtn.setAttribute("disabled", "true");
 const MENTIONS = {
 	EXCELLENT: "EXCELLENT",
 	TRES_BIEN: "TRÈS BIEN",
@@ -25,12 +27,11 @@ const patternFailedMessages = {
 	password:
 		"Password must contain at least 8 characters, 1 uppercase letter, 1 lowercase letter and 1 number",
 };
-const submitBtn = form.querySelector("button[type='submit']");
-submitBtn.setAttribute("disabled", "true");
 function validateInput(e) {
 	const { value, id } = e.target;
 	const span = e.target.nextElementSibling;
-	if (!regexMap[id].test(value)) {
+	if (!regexMap[id]) return;
+	if (!regexMap[id]?.test(value)) {
 		span.textContent = patternFailedMessages[id];
 		span.className = "error-span";
 	} else {
@@ -38,7 +39,7 @@ function validateInput(e) {
 		span.className = "";
 	}
 	const etudiant = validateForm();
-	if (etudiant !== null) submitBtn.setAttribute("disabled", "false");
+	if (etudiant !== null) submitBtn.removeAttribute("disabled");
 	else submitBtn.setAttribute("disabled", "true");
 }
 function validateFields(etudiant) {
@@ -63,12 +64,8 @@ function showErrors(errors) {
 		errorsContainer.appendChild(span);
 	}
 }
-function clearErrors() {
-	errorsContainer.innerHTML = "";
-}
 
 function validateForm() {
-	clearErrors();
 	const { nom, prenom, code, filliere, note, password } = form;
 	let etudiant = {
 		nom: nom.value.trim(),
@@ -86,10 +83,25 @@ form.querySelectorAll(
 ).forEach((input) => input.addEventListener("input", validateInput));
 form.addEventListener("submit", (e) => {
 	e.preventDefault();
-	const etudiantOptional = validateForm();
-	if (etudiantOptional) {
-		//todo: send to php backend
-		alert("etudiant ajouté");
-		console.log(etudiantOptional);
+	const etudiant = validateForm();
+	etudiant.sexe = form.querySelector("input[name='sexe']:checked").value;
+	etudiant.semestres = Array.from(
+		form.querySelectorAll("input.semestreCheckbox:checked")
+	).map((checkbox) => checkbox.value);
+	if (etudiant) {
+		const formData = new FormData();
+		for (const key in etudiant) {
+			formData.append(key, etudiant[key]);
+		}
+		addEtudiant(formData);
 	}
 });
+
+async function addEtudiant(formData) {
+	const options = {
+		method: "post",
+		body: formData,
+	};
+	const response = await fetch("./add.php", options);
+	console.log(response.json());
+}

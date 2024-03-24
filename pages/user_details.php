@@ -30,7 +30,7 @@
     </div>
 
     <main class="home-content">
-        <h1 class="heading-big">details d'etudiant: <?= $etudiant['codeE'] ?></h1>
+        <h1 class="heading-big">details d'etudiant: <?= $etudiant['code'] ?></h1>
         <hr class="rule">
         <?php
             if(empty($etudiant)) echo "<h1 class='empty-list'>aucun etudiant n'est trouvé</h1>";
@@ -43,8 +43,8 @@
         </div>
         <div class="liens">
             <a href="javascript:history.go(-1)" class="back-link">retour</a>
-            <a href="modifier.php?codeE=<?=$etudiant["codeE"]?>" class="back-link">modifier</a>
-            <a href="supprimer.php?codeE=<?=$etudiant["codeE"]?>" class="back-link">supprimer</a>
+            <a href="modifier.php?codeE=<?=$etudiant["code"]?>" class="back-link">modifier</a>
+            <a href="supprimer.php?codeE=<?=$etudiant["code"]?>" class="back-link">supprimer</a>
         </div>
         <?php include("../components/footer.php") ?>
     </main>

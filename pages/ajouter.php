@@ -30,25 +30,25 @@
         <h1 class="heading-big">Ajouter Etudiant</h1>
         <hr class="rule">
         <section class="form">
-            <form id="form" action="etudiants.php" method="post">
+            <form id="form">
                 <label>
                     <span>Entrez le code</span>
-                    <input placeholder="code" type="text" id="code" required>
+                    <input placeholder="code" type="text" id="code" name="code" required>
                     <span class="error"></span>
                 </label>
                 <label>
                     <span>Entrez le nom</span>
-                    <input placeholder="nom" type="text" id="nom" required>
+                    <input placeholder="nom" type="text" id="nom" name="nom" required>
                     <span class="error"></span>
                 </label>
                 <label>
                     <span>Entrez le prenom</span>
-                    <input placeholder="prenom" type="text" id="prenom" required>
+                    <input placeholder="prenom" type="text" id="prenom" name="prenom" required>
                     <span class="error"></span>
                 </label>
                 <label>
                     <span>Entrez la note</span>
-                    <input placeholder="note" type="number" id="note" required min="0" max="20">
+                    <input placeholder="note" type="number" id="note" name="note" required min="0" max="20">
                     <span class="error"></span>
                 </label>
                 <label>
@@ -61,46 +61,46 @@
                 </label>
                 <label>
                     <span>le mot de passe</span>
-                    <input placeholder="mot de passe" type="password" id="password" required min="8">
+                    <input placeholder="mot de passe" type="password" id="password" name="password" required min="8">
                     <span class="error"></span>
                 </label>
                 <label>
                     <span>le sexe</span>
                     <div class="radio-group">
                         <label class="gender-container">
-                        <span>homme</span>
-                        <input type="radio" name="sexe" value="homme" checked>
-                    </label>
-                    <label class="gender-container">
-                        <span>femme</span>
-                        <input type="radio" name="sexe" value="femme">
-                    </label>
+                            <span>homme</span>
+                            <input type="radio" name="sexe" value="homme" checked>
+                        </label>
+                        <label class="gender-container">
+                            <span>femme</span>
+                            <input type="radio" name="sexe" value="femme">
+                        </label>
                     </div>
                 </label>
                 <div class="checkbox-group">
                     <label class="checkbox-container">
                         <span>S1</span>
-                        <input type="checkbox" name="semestres[0]" value="S1">
+                        <input type="checkbox" class="semestreCheckbox" name="semestres[0]" value="S1">
                     </label>
                     <label class="checkbox-container">
                         <span>S2</span>
-                        <input type="checkbox" name="semestres[1]" value="S2">
+                        <input type="checkbox" class="semestreCheckbox" name="semestres[1]" value="S2">
                     </label>
                     <label class="checkbox-container">
                         <span>S3</span>
-                        <input type="checkbox" name="semestres[2]" value="S3">
+                        <input type="checkbox" class="semestreCheckbox" name="semestres[2]" value="S3">
                     </label>
                     <label class="checkbox-container">
                         <span>S4</span>
-                        <input type="checkbox" name="semestres[3]" value="S4">
+                        <input type="checkbox" class="semestreCheckbox" name="semestres[3]" value="S4">
                     </label>
                     <label class="checkbox-container">
                         <span>S5</span>
-                        <input type="checkbox" name="semestres[4]" value="S5">
+                        <input type="checkbox" class="semestreCheckbox" name="semestres[4]" value="S5">
                     </label>
                     <label class="checkbox-container">
                         <span>S6</span>
-                        <input type="checkbox" name="semestres[5]" value="S6">
+                        <input type="checkbox" class="semestreCheckbox" name="semestres[5]" value="S6">
                     </label>
                 </div>
                 <label class="text-area-container">
